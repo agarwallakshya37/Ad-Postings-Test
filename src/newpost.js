@@ -1,14 +1,22 @@
 import React, { Component } from "react";
+import { useHistory } from "react-router-dom";
+import "./Test";
+import {Button} from 'reactstrap' ;
+
+// var history= useHistory();
 
 class newpost extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       address: "",
       title: "",
       extraInfo: "",
     };
+  }
+
+  componentDidMount() { 
+    let history = useHistory();
   }
 
   handleAddressChange = (event) => {
@@ -34,12 +42,13 @@ class newpost extends Component {
     event.preventDefault();
   };
 
-  navigateToMap=(event)=>{
-    
-  };
+  // navigateToMap=()=>{
+  //   history.push('./Form');
+  // };
 
   render() {
     const { address, title, extraInfo } = this.state;
+    // const history= useHistory();
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -64,7 +73,7 @@ class newpost extends Component {
         <div> 
           <textarea value={extraInfo} onChange={this.handleInfoChange} />
         </div>
-        <button onClick={this.navigateToMap} type="submit">Submit</button>
+        <Button onClick={() => history.push("/Test") } >Post The Ad </Button>
       </form>
     );
   }
